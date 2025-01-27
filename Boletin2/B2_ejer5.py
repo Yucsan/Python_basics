@@ -9,7 +9,10 @@ for letra in frase:
     if letra == letraBusca:
         cuenta +=1
 
+cantidad = frase.count(letraBusca)
+
 if(cuenta == 0):
     print(f"No hay letra {letraBusca}")
 else:
-    print(f"en la frase hay {cuenta} coincidencias")    
+    print(f"en la frase hay {cuenta} coincidencias")  
+    print(cantidad)  

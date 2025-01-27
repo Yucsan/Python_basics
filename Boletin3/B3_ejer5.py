@@ -9,11 +9,11 @@ cada columna visualizando los resultados en pantalla.
 """
 
 tabla = [
-            [12,15,10,16],
-            [5,19,14,16],
-            [12,15,60,16],
-            [5,10,14,7],
-            [72,15,10,18]
+            [12,15,10,16,8],
+            [5,19,14,16,7],
+            [12,15,60,16,25],
+            [5,10,14,7,30],
+            [72,15,10,18,4]
         ]
 
 # suma de filas
@@ -24,7 +24,7 @@ print()
 
 #suma de filas
 aux=[]
-for col in range(4):
+for col in range(5):
     aux=[]
     for i in range(5):
         aux.append(tabla[i][col])

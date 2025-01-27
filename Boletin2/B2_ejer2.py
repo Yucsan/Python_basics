@@ -22,24 +22,25 @@ def divi(numero1, numero2):
         
 opcion = 1 # para que entre
 while opcion != 5:
+    print("1 suma, 2 restar, 3 multiplicar, 4 Dividir, 5 salir")
     opcion = int(input('Introduce un opcion: '))
 
     if opcion == 1:
         num1 = int(input('Introduce un número: '))
         num2 = int(input('Introduce un número: '))
-        print( sumar(num1,num2) )
+        print( f"suma: {sumar(num1,num2)}" )
     elif opcion == 2:
         num1 = int(input('Introduce un número: '))
         num2 = int(input('Introduce un número: '))
-        print( resta(num1,num2) )
+        print( f" resta: {resta(num1,num2)}" )
     elif opcion == 3:
         num1 = int(input('Introduce un número: '))
         num2 = int(input('Introduce un número: '))
-        print( multi(num1,num2) )
+        print( f" multi {(num1,num2)}" )
     elif opcion == 4:            
         num1 = int(input('Introduce un número: '))
         num2 = int(input('Introduce un número: '))
-        print( divi(num1,num2) )
+        print( f" division: {divi(num1,num2)}" )
 
 
 print("salimos")    
