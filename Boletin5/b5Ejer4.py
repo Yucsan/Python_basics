@@ -18,6 +18,8 @@ paciente = {
     "aten": 1
 }
 
+test
+
 """
 
 # FUNCIONES para llenado random
