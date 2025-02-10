@@ -34,7 +34,7 @@ while opc !="0":
         res = input("ingresa respuesta: ")
         if res == preguntas[opc][ale][2]:
             print("muy bien")
-    elif opc> 3:
+    elif opc> "3":
         print("opcion erronea")
             
 """
