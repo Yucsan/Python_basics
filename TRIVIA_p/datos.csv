@@ -1,0 +1,11 @@
+categoria, dificultad, pregunta, r1,r2,r3,r4, correcta
+
+ciencia, facil, Qué gas da vida a las plantas', ['Oxígeno', 'Plástico', 'Hidrogeno', 'Neon'], 'Oxígeno,
+ciencia, facil, ¿Cuál es el planeta más cercano al Sol?', ['Mercurio', 'Marte', 'Tierra', 'Venus'], 'Mercurio,
+ciencia, facil, ¿Cómo se llama el órgano que bombea la sangre?', ['Corazón', 'Higado', 'Pulmones', 'Cerebro'], 'Corazón,
+ciencia, medias, ¿Cómo se llama el proceso por el cual las plantas producen su propio alimento?', ['Protón', 'Electrón', 'Neón', 'Xenón'], 'Electrón',
+ciencia, medias, ¿Cuál es el planeta más grande del sistema solar?', ['Júpiter', 'Urano', 'Mercurio', 'Tierra'], 'Júpiter',
+ciencia, medias, ¿Cómo se llama el proceso por el cual las plantas producen su propio alimento?', ['Necrosis', 'Fagocitosis', 'Fotosíntesis', 'Respiración'], 'Fotosíntesis',
+ciencia, dificiles, ¿Qué fenómeno físico describe la resistencia de un fluido al movimiento de un objeto a través de él?', ['Hidrógeno', 'Mercurio', 'Oganesón', 'Oxígeno'], 'Oganesón',
+ciencia, dificiles, ¿Cómo se llama la partícula hipotética que mediaría la fuerza gravitatoria en la teoría cuántica?', ['Quark', 'Neutrino', 'Fotón', 'Gravitón'], 'Gravitón',
+ciencia, dificiles, ¿Qué fenómeno físico describe la resistencia de un fluido al movimiento de un objeto a través de él?', ['Viscosidad', 'Inercia', 'Entropía', 'Presión'], 'Viscosidad',
