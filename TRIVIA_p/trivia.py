@@ -1,5 +1,14 @@
 import random
+# categoria,dificultad,pregunta,r1,r2,r3,r4,correcta
 
+
+
+# solo funcionan las preguntas de la categoria 1
+
+
+
+
+"""
 preguntas = {
     '1': [
         #Fáciles
@@ -44,42 +53,66 @@ preguntas = {
         ('¿Qué país tiene la mayor extensión territorial en América del Sur?', ['Argentina', 'Chile', 'Colombia', 'Brasil'], 'Brasil')
     ]
 }
+"""
 
-dif = ""
+import csv
+
+registros = []
+with open('datos.csv', encoding='utf-8') as f:
+    lector = csv.DictReader(f)
+    for registro in lector:
+        #categoria, pregunta, r1,r2,r3,r4, correcta
+        categoria = (registro['categoria'])
+        pregunta = (registro['pregunta'])
+        r1 = (registro['r1'])
+        r2 = (registro['r2'])
+        r3 = (registro['r3'])
+        r4 = (registro['r4'])
+        correcta = (registro['correcta']).strip()
+        tupla = (categoria, pregunta, r1, r2, r3, r4, correcta)
+        registros.append(tupla)
+
+dif = 0
 textDif = ""
-opc = "1"
+opc = 1
 resp = ""
 
-while opc !="0":
+while opc != 100:
 
     print("escoge dificultad: 1 facil 2 media 3 dificil.")
-    dif = input("inserta opcion (0 para salir): ")
+    dif = int(input("inserta opcion (0 para salir): "))
 
-    if dif=='0':
+    if dif== 100:
         print("Nos vemos.")
         break
 
     print("que categoria quieres? 1 ciencia, 2 historia, 3 geografia.")
-    opc = input("inserta opcion (0 para salir): ")
+    opc = int(input("inserta opcion (0 para salir): "))
 
-    if opc == "1" or opc == "2" or opc=="3":
+    if opc == 1 or opc == 2 or opc==3:
 
-        if dif == '1':
+        if dif == 1:
             ale = random.randint(0,2)
-        elif dif == '2':
+            print("q sale: ",ale)
+        elif dif == 2:
              ale = random.randint(3,5)
-        elif dif == '3':
+        elif dif == 3:
             ale = random.randint(6,8)
 
-        print( preguntas[opc][ale][0] )
-        print( preguntas[opc][ale][1] )
+        print( registros[ale][opc] )
+        print( registros[ale][2], registros[ale][3], registros[ale][4], registros[ale][5] )
 
-        res = input("ingresa respuesta: ")
-        if res == preguntas[opc][ale][2]:
+        res = input("ingresa respuesta: ").strip()
+
+        print(res)
+        print(registros[ale][6])
+
+        if res.strip() == registros[ale][6]:
+          
             print("¡Muy bien!")
         else:
             print("¡Mal!")
-    elif opc == "0":
+    elif opc == "100":
         print("Nos vemos.")
         break
     else:
