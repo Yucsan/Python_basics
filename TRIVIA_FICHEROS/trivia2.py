@@ -1,12 +1,6 @@
 import random
+import time
 # categoria,dificultad,pregunta,r1,r2,r3,r4,correcta
-
-
-
-# solo funcionan las preguntas de la categoria 1
-
-
-
 
 """
 preguntas = {
@@ -58,62 +52,147 @@ preguntas = {
 import csv
 
 registros = []
+
+filtrado = [] # filtro preguntas de la categoria que se elije
+
+puntaje = 0
+reglasPuntos = (1,5,7)
+
+preguntas = {
+    'ciencia':[],
+    'historia':[],
+    'geografia':[],
+}
+
 with open('datos.csv', encoding='utf-8') as f:
     lector = csv.DictReader(f)
     for registro in lector:
-        #categoria, pregunta, r1,r2,r3,r4, correcta
-        categoria = (registro['categoria'])
-        pregunta = (registro['pregunta'])
-        r1 = (registro['r1'])
-        r2 = (registro['r2'])
-        r3 = (registro['r3'])
-        r4 = (registro['r4'])
-        correcta = (registro['correcta']).strip()
-        tupla = (categoria, pregunta, r1, r2, r3, r4, correcta)
-        registros.append(tupla)
+        
+        categoria = registro['categoria'].strip()
+        pregunta = registro['pregunta'].strip()
+        r1 = registro['r1'].strip()
+        r2 = registro['r2'].strip()
+        r3 = registro['r3'].strip()
+        r4 = registro['r4'].strip()
+        correcta = registro['correcta'].strip()
+
+        nivel = registro['dificultad'].strip()
+
+        tupla2 = (categoria, pregunta, r1,r2,r3,r4, correcta, nivel)
+        registros.append(tupla2)
+
+        if categoria == 'ciencia':
+            preguntas['ciencia'].append(tupla2)
+        elif categoria == 'historia':
+            preguntas['historia'].append(tupla2)
+        else:
+            preguntas['geografia'].append(tupla2)   
 
 dif = 0
 textDif = ""
 opc = 1
 resp = ""
+nivel = ""
+categoriaElegida = ''
 
+print(" ****** JUEGO TRIVIA PABLO / FERNANDO  ******* ")
 while opc != 100:
 
-    print("escoge dificultad: 1 facil 2 media 3 dificil.")
-    dif = int(input("inserta opcion (0 para salir): "))
 
-    if dif== 100:
+    print("Escoge dificultad: (1)facil (2)media  (3)dificil.")
+    print(f"*** PUNTAJE ACUMULADO: {puntaje} puntos")
+    dif = int(input("inserta opcion (100 para salir):..> "))
+
+    if dif == 100:
         print("Nos vemos.")
         break
 
     print("que categoria quieres? 1 ciencia, 2 historia, 3 geografia.")
     opc = int(input("inserta opcion (0 para salir): "))
 
+    if dif == 1:
+        nivel = "facil"
+    elif dif == 2:
+        nivel = "media"
+    else:
+        nivel = "dificil"  
+
+    ale = 0
     if opc == 1 or opc == 2 or opc==3:
 
         if dif == 1:
-            ale = random.randint(0,2)
-            print("q sale: ",ale)
+            categoriaElegida = 'ciencia'
         elif dif == 2:
-             ale = random.randint(3,5)
+            categoriaElegida = 'historia'
         elif dif == 3:
-            ale = random.randint(6,8)
+            categoriaElegida = 'geografia'
 
-        print( registros[ale][opc] )
-        print( registros[ale][2], registros[ale][3], registros[ale][4], registros[ale][5] )
+        print("------")
+                                                #filtro todas las preguntas de la categoria y nivel seleccionada
+        for i in preguntas[categoriaElegida]:     
+            if i[7] == nivel:
+                filtrado.append(i)
+        #print(filtrado)  
 
-        res = input("ingresa respuesta: ").strip()
+        ale = random.randint(0, len(preguntas[categoriaElegida])-1 ) #Genero Nº aleatorio segun el Nº d preguntas
+        
+        print( "pregunta: ", preguntas[categoriaElegida][ale][1] ) #muestro la pregunta elegida
+        print( "opciones: ", end=" ")
 
-        print(res)
-        print(registros[ale][6])
+                            #muestro las opciones de la respuesta 2,3,4,5 de la pregunta elegida ale
+        for i in range(2,6):
+            print(preguntas[categoriaElegida][ale][i], end=" ")  
 
-        if res.strip() == registros[ale][6]:
+        tiempo = time.time() #declaramos tiempo
+        res = int(input("ingresa respuesta: ").lower().strip())
+        
+        aux = 0
+        resElegida = ""
+
+        if res == 1:
+            aux = 2
+        elif res == 2:
+           aux = 3
+        elif res == 3:
+           aux = 4
+        elif res == 4:
+            aux = 5
+
+        resElegida = preguntas[categoriaElegida][ale][aux]
+    
+        print("tu respuesta", resElegida)
+        #print("comprueba respuesta correcta", preguntas[categoriaElegida][ale][6].lower().strip())
+
+        tiempoRespuesta = time.time() - tiempo
+        #comprobamos respuesta
+        if resElegida.lower() == preguntas[categoriaElegida][ale][6].lower().strip() and tiempoRespuesta <= 6 : 
           
             print("¡Muy bien!")
+            print(f"has respondido en {tiempoRespuesta} segundos")
+            if nivel == "facil":
+                puntaje= puntaje+reglasPuntos[0]
+            elif nivel == "media":
+                puntaje= puntaje+reglasPuntos[1]
+            elif nivel == "dificil":
+                puntaje= puntaje+reglasPuntos[2]
+
+        elif tiempoRespuesta > 6:
+            print(f"has respondido en {tiempoRespuesta} segundos")
+            print("te pasaste de tiempo tienes solo 6 segundos para responder")
+
         else:
+            print(f"has respondido en {tiempoRespuesta} segundos")
             print("¡Mal!")
+
+
     elif opc == "100":
         print("Nos vemos.")
         break
     else:
         print("Opción errónea.")
+    
+    print(" ")
+    
+
+
+print("sales del programa")
