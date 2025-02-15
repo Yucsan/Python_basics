@@ -40,7 +40,7 @@ comboGanador = []
 
 import controlador2
 
-# si existe abrimos fichero con nombre de jugadores
+# si existe abrimos fichero con nombre de jugadores //
 
 controlador2.cargarData(jugadores)
 
