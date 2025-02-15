@@ -1,6 +1,4 @@
-import random
-import time
-# categoria,dificultad,pregunta,r1,r2,r3,r4,correcta
+
 
 """
 preguntas = {
@@ -50,6 +48,9 @@ preguntas = {
 """
 
 import csv
+import random
+import time
+# categoria,dificultad,pregunta,r1,r2,r3,r4,correcta
 
 registros = []
 
