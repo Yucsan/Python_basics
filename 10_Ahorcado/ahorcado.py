@@ -88,7 +88,7 @@ def jugar():
     for i in pal:
         codi.append("*")
 
-    print("palabra RANDOM", pal) #RECUERDA BORRAR ESTO
+    #print("palabra RANDOM", pal) #RECUERDA BORRAR ESTO
 
     #muestra espacios
     def pinta():
