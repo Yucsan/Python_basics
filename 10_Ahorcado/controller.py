@@ -1,0 +1,51 @@
+
+
+def muestraImg(restantes):
+    if restantes == 6:
+          print("  +----+")
+          print("       |")
+          print("       |")
+          print("       |")
+          print("       |")
+          print("       |")
+          print("==========")   
+    elif restantes == 5:
+          print("  +----+")
+          print("  |    |")
+          print("       |")
+          print("       |")
+          print("       |")
+          print("       |")
+          print("==========")
+    elif restantes == 4:
+          print("  +----+")
+          print("  |    |")
+          print("  o    |")
+          print("  |    |")
+          print("       |")
+          print("       |")
+          print("==========")
+    elif restantes == 3:
+          print("  +----+")
+          print("  |    |")
+          print("  o    |")
+          print("  | \  |")
+          print("       |")
+          print("       |")
+          print("==========")   
+    elif restantes == 2:
+          print("  +----+")
+          print("  |    |")
+          print("  o    |")
+          print("/ | \  |")
+          print("       |")
+          print("       |")
+          print("==========")
+    elif restantes == 1:
+          print("  +----+")
+          print("  |    |")
+          print("  o    |")
+          print("/ | \  |")
+          print(" /     |")
+          print("       |")
+          print("==========")

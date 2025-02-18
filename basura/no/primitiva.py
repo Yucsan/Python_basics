@@ -54,6 +54,8 @@ else:
         escritor.writerow(['Fernando','Chang'])
         escritor.writerow(['Ana','Perez'])
 
+    f.close()    
+
 with open('jugadores.csv', encoding='utf8')as f:
     lector = csv.DictReader(f)
     
@@ -62,6 +64,8 @@ with open('jugadores.csv', encoding='utf8')as f:
         apellido = i['apellido'].strip()
         Lista = [nombre, apellido,0,0,0,0,0,0,0,0]
         jugadores.append(Lista)
+
+f.close()
 
 #------------------------------------muestra
 def mostrarJugadores():

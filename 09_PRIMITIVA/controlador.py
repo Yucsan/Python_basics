@@ -1,19 +1,20 @@
 
 import csv
 import os
+import random
 
 # 0 ======   CARGAMOS EL ARCHIVO
 def cargarData(jugadores):
-    print("me llaman")
-    if os.path.isfile("./jugadores.csv"):
-        print("ya existe el archivo")
-    else:
-        print("NO existe el archivo lo creammos")    
+
+    if not os.path.isfile("./jugadores.csv"):
+
+        #print("NO existe el archivo lo creammos")    
         with open('jugadores.csv', encoding='utf8', mode='w', newline='' ) as f:
             escritor = csv.writer(f)
             escritor.writerow(['nombre','apellido']) #escribe encabezado
             escritor.writerow(['Fernando','Chang'])
             escritor.writerow(['Ana','Perez'])
+        f.close()    
     
     with open('jugadores.csv', encoding='utf8')as f:
         lector = csv.DictReader(f)
@@ -23,6 +24,8 @@ def cargarData(jugadores):
             apellido = i['apellido'].strip()
             Lista = [nombre, apellido,0,0,0,0,0,0,0,0]
             jugadores.append(Lista)
+
+    f.close()        
 
 #  1 ------------------------------- 1 AGREGA JUGADORES
 def agregaJugador(jugadores):
@@ -36,9 +39,9 @@ def agregaJugador(jugadores):
             escritor.writerow([nombre, apellido])
 
 # 2  --------------------------------------- GENERO Numeros Ganadores
-def numGanador():
-    global comboGanador
-    comboGanador = [] #limpio Nºs ganadores
+def numGanador(jugadores, comboGanador):
+
+    comboGanador.clear()
 
     for jug in jugadores: #limpio anteriores coincidencias
         jug[9] = 0
@@ -48,11 +51,11 @@ def numGanador():
         comboGanador.append(ale)
 
     print(f" Este Son Los Nums Ganadores {comboGanador}")
-    generaNumeros()    
+    generaNumeros(jugadores)    
 
 #agrega aleatorios a los jugadores
-def generaNumeros():
-  print("entro")
+def generaNumeros(jugadores):
+
   for i in jugadores:
     for j in range(2,9):
         ale = random.randint(1,49)    
@@ -66,7 +69,8 @@ def mostrarJugadores(jugadores):
         print(i)
 
 # 4 --------------------------------------- comprueba Ganador
-def ganadores(comboGanador):
+def ganadores(comboGanador, jugadores):
+
     print("numeros ganadores")
     print(comboGanador)
     aux = []

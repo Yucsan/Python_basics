@@ -38,11 +38,11 @@ jugadores = [] #lista local
 opc = 0
 comboGanador = []
 
-import controlador2
+import controlador
 
 # si existe abrimos fichero con nombre de jugadores //
 
-controlador2.cargarData(jugadores)
+controlador.cargarData(jugadores)
 
 # ------------------  bucle principal  
 while opc != 6:
@@ -56,19 +56,19 @@ while opc != 6:
     opc = int(input('Inserta una opción >:_ '))
 
     if opc == 1:
-        controlador2.agregaJugador(jugadores)
+        controlador.agregaJugador(jugadores)
     
     elif opc == 2:
-        controlador2.numGanador()
+        controlador.numGanador(jugadores, comboGanador)
 
     elif opc == 3:
-        controlador2.mostrarJugadores(jugadores)
+        controlador.mostrarJugadores(jugadores)
 
     elif opc == 4:
-        controlador2.ganadores(comboGanador)
+        controlador.ganadores(comboGanador, jugadores)
 
     elif opc == 5:
-        controlador2.ordena()    
+        controlador.ordena()    
       
     elif opc == 6:
         print("NOS VEMOS")
