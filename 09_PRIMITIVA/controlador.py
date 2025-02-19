@@ -46,9 +46,16 @@ def numGanador(jugadores, comboGanador):
     for jug in jugadores: #limpio anteriores coincidencias
         jug[9] = 0
 
+    while len(comboGanador) < 7:
+        ale = random.randint(1,49)
+        if ale not in comboGanador:
+            comboGanador.append(ale)
+        
+    """
     for i in range(7):  #Genero Nums aleatorios 
         ale = random.randint(1,49)
         comboGanador.append(ale)
+    """
 
     print(f" Este Son Los Nums Ganadores {comboGanador}")
     generaNumeros(jugadores)    
@@ -128,4 +135,6 @@ def ordena():
         for jug in jugadoresOrdenados:
             escritor.writerow(jug)
 
-    print(jugadoresOrdenados)
+    #print(jugadoresOrdenados)
+    for i in jugadoresOrdenados:
+        print(i)
